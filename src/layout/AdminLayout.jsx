@@ -1,6 +1,8 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import { Coffee, LayoutDashboard, ListOrdered, Package, User2Icon, LogOut, Settings,DollarSign } from "lucide-react";
+import { Coffee, LayoutDashboard, ListOrdered, Package, User2Icon, LogOut, Settings, DollarSign, CableIcon, TagIcon, ArrowBigDownIcon, SquareArrowRightExit, LucideSquareArrowRightEnter } from "lucide-react";
 import { useAuth } from '../context/AuthContext';
+import { FaExpandArrowsAlt } from 'react-icons/fa'; 
+
 
 export default function AdminLayout() {
   const navigate = useNavigate();
@@ -55,11 +57,11 @@ export default function AdminLayout() {
               <User2Icon /> Users
             </Link>
 
-            <Link to="/categories" style={{ color: "white", textDecoration: "none", display: "flex", gap: "10px", paddingLeft: "20px" }}>
-              Categories
+            <Link to="/categories" style={{ color: "white", textDecoration: "none", display: "flex", gap: "10px" }}>
+              <TagIcon /> Categories
             </Link>
-            <Link to="/sizes" style={{ color: "white", textDecoration: "none", display: "flex", gap: "10px", paddingLeft: "20px" }}>
-              Sizes
+            <Link to="/sizes" style={{ color: "white", textDecoration: "none", display: "flex", gap: "10px", }}>
+              <FaExpandArrowsAlt size={20} /> Sizes
             </Link>
 
              <Link to="/settings" style={{ color: "white", textDecoration: "none", display: "flex", gap: "10px" }}>
