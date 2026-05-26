@@ -51,7 +51,7 @@ export default function Dashboard() {
     { title: 'Users', value: stats.users, icon: <Users size={32} />, bgColor: '#ffffff', borderColor: '#3b82f6' },
     { title: 'Orders', value: stats.orders, icon: <ShoppingCart size={32} />, bgColor: '#ffffff', borderColor: '#10b981' },
     { title: 'Products', value: stats.products, icon: <Package size={32} />, bgColor: '#ffffff', borderColor: '#f59e0b' },
-    { title: 'Daily Sales', value: `$${stats.sales.toFixed(2)}`, icon: <DollarSign size={32} />, bgColor: '#ffffff', borderColor: '#8b5cf6' }
+    { title: 'Sales', value: `$${stats.sales.toFixed(2)}`, icon: <DollarSign size={32} />, bgColor: '#ffffff', borderColor: '#8b5cf6' }
   ];
 
   return (

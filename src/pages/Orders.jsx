@@ -185,7 +185,7 @@ export default function Orders() {
                                     )}
                                     {order.canCancel() && (
                                         <button
-                                            onClick={() => handleStatusUpdate(order.id, 'Cancelled')}
+                                            onClick={() => handleStatusUpdate(order.id, 'Canceled')}
                                             style={{
                                                 padding: '6px 12px',
                                                 backgroundColor: '#ef5350',
