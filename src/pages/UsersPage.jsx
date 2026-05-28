@@ -80,8 +80,9 @@ export default function UsersPage() {
               Click "+ Add New User" to create your first user.
             </div>
           ) : (
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead>
+            <div className="table-responsive">
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
                 <tr>
                   <th style={tableHeaderStyle}>UserName</th>
                   <th style={tableHeaderStyle}>Email</th>
@@ -105,6 +106,7 @@ export default function UsersPage() {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </div>
         </>

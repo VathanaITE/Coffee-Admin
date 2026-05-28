@@ -117,8 +117,9 @@ export default function CategoryManagement() {
         ) : categories.length === 0 ? (
           <p>No categories found.</p>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
+          <div className="table-responsive">
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
               <tr style={{ backgroundColor: '#f5f5f5' }}>
                 <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #ddd' }}>Name</th>
                 <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #ddd' }}>Actions</th>
@@ -205,7 +206,8 @@ export default function CategoryManagement() {
                 </tr>
               ))}
             </tbody>
-          </table>
+            </table>
+          </div>
         )}
       </div>
     </div>

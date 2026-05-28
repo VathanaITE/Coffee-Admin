@@ -54,16 +54,17 @@ export default function Products() {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1>Coffee Inventory</h1>
+        <h1>Product Management</h1>
         <button onClick={navigateToAddProduct} style={{ padding: '10px 20px', backgroundColor: '#059669', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-          + Add New Coffee
+          + Add New Product
         </button>
       </div>
 
       
       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
+        <div className="table-responsive">
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
             <tr>
               <th style={tableHeaderStyle}>Image</th>
               <th style={tableHeaderStyle}>Name</th>
@@ -106,7 +107,8 @@ export default function Products() {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       </div>
     </div>
   );

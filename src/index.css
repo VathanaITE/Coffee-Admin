@@ -1,111 +1,110 @@
-/* :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+.app-sidebar {
+  transition: all 0.25s ease;
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.app-content {
+  transition: margin 0.25s ease, padding 0.25s ease;
+}
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table-responsive table {
+  min-width: 600px;
+}
+
+@media (max-width: 1024px) {
+  .app-sidebar {
+    position: static ;
+    width: 100% ;
+    height: auto ;
+    padding: 18px ;
+  }
+
+  .app-sidebar nav {
+    gap: 14px;
+  }
+
+  .app-sidebar a {
+    flex-wrap: wrap;
+  }
+
+  .app-content {
+    margin-left: 0 !important;
+    padding: 20px !important;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+@media (max-width: 768px) {
+  .app-sidebar {
+    padding: 12px !important;
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  .app-sidebar a {
+    font-size: 0.95rem;
+  }
+
+  .table-responsive table {
+    min-width: 520px;
   }
 }
 
-body {
-  margin: 0;
+
+
+@media (max-width: 1024px) {
+  .stat-card { padding: 20px; min-height: 140px; }
+  .stat-card-value { font-size: 1.6rem; }
+  .stat-card-icon { width: 52px; height: 52px; }
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
+/* Make dashboard cards fill rows and expand to fill space */
+
+
+@media (max-width: 900px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+  .cards-wrapper { min-height: auto; }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.dashboard-grid > * {
+  min-height: 180px;
+}
+
+.dashboard-loading-card {
+  grid-column: 1 / -1;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
   text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  color: #64748b;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+@media (max-width: 480px) {
+  .stat-card { padding: 14px; min-height: 120px; }
+  .stat-card-value { font-size: 1.25rem; }
+  .stat-card-title { font-size: 0.75rem; }
+  .stat-card-icon { width: 40px; height: 40px; }
 }
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-} */

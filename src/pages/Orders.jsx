@@ -98,116 +98,114 @@ export default function Orders() {
 
     return (
         <>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <h1>Order Management</h1>
-        </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                <h1>Order Management</h1>
+            </div>
 
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                    <tr>
-                        <th style={tableHeaderStyle}>Order ID</th>
-                        <th style={tableHeaderStyle}>Items</th>
-                        <th style={tableHeaderStyle}>Status</th>
-                        <th style={tableHeaderStyle}>Total Price</th>
-                        <th style={tableHeaderStyle}>Customer</th>
-                        <th style={tableHeaderStyle}>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order) => (
-                        <tr key={order.id}>
-                            <td style={tableCellStyle}>
-                                <strong>#{order.id}</strong>
-                                <br />
-                                <small style={{ color: '#666' }}>{order.orderDate}</small>
-                            </td>
-                            <td style={tableCellStyle}>
-                                {order.getItemsSummary()}
-                            </td>
-                            <td style={tableCellStyle}>
-                                <span style={getStatusBadge(order.status)}>
-                                    {order.status}
-                                </span>
-                            </td>
-                            <td style={tableCellStyle}>
-                                <strong>{order.getFormattedTotal()}</strong>
-                            </td>
-
-                            <td style={tableCellStyle}>
-                                {(() => {
-                                // We now use order.userId because we fixed the constructor above
-                                const customer = users.find(u => u.id == order.userId);
-                                
-                                return (
-                                    <>
-                                        <strong>{customer ? customer.name : 'Unknown User'}</strong>
+            <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+                <div className="table-responsive">
+                    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                        <thead>
+                            <tr>
+                                <th style={tableHeaderStyle}>Order ID</th>
+                                <th style={tableHeaderStyle}>Items</th>
+                                <th style={tableHeaderStyle}>Status</th>
+                                <th style={tableHeaderStyle}>Total Price</th>
+                                <th style={tableHeaderStyle}>Customer</th>
+                                <th style={tableHeaderStyle}>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {orders.map((order) => (
+                                <tr key={order.id}>
+                                    <td style={tableCellStyle}>
+                                        <strong>#{order.id}</strong>
                                         <br />
-                                        <small>{customer ? customer.email : (order.userId || 'No ID')}</small>
-                                    </>
-                                );
-                            })()}
-                            </td>
-                           
-                            <td style={tableCellStyle}>
-                                <div style={{ display: 'flex', gap: '8px' }}>
-                                    {order.status === 'Preparing' && (
-                                        <button
-                                            onClick={() => handleStatusUpdate(order.id, 'Ready')}
-                                            style={{
-                                                padding: '6px 12px',
-                                                backgroundColor: '#66bb6a',
-                                                color: 'white',
-                                                border: 'none',
-                                                borderRadius: '4px',
-                                                cursor: 'pointer',
-                                                fontSize: '12px'
-                                            }}
-                                        >
-                                            Mark Ready
-                                        </button>
-                                    )}
-                                    {order.status === 'Ready' && (
-                                        <button
-                                            onClick={() => handleStatusUpdate(order.id, 'Completed')}
-                                            style={{
-                                                padding: '6px 12px',
-                                                backgroundColor: '#26a69a',
-                                                color: 'white',
-                                                border: 'none',
-                                                borderRadius: '4px',
-                                                cursor: 'pointer',
-                                                fontSize: '12px'
-                                            }}
-                                        >
-                                            Completed
-                                        </button>
-                                    )}
-                                    {order.canCancel() && (
-                                        <button
-                                            onClick={() => handleStatusUpdate(order.id, 'Canceled')}
-                                            style={{
-                                                padding: '6px 12px',
-                                                backgroundColor: '#ef5350',
-                                                color: 'white',
-                                                border: 'none',
-                                                borderRadius: '4px',
-                                                cursor: 'pointer',
-                                                fontSize: '12px'
-                                            }}
-                                        >
-                                            Cancel
-                                        </button>
-                                    )}
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                                        <small style={{ color: '#666' }}>{order.orderDate}</small>
+                                    </td>
+                                    <td style={tableCellStyle}>
+                                        {order.getItemsSummary()}
+                                    </td>
+                                    <td style={tableCellStyle}>
+                                        <span style={getStatusBadge(order.status)}>
+                                            {order.status}
+                                        </span>
+                                    </td>
+                                    <td style={tableCellStyle}>
+                                        <strong>{order.getFormattedTotal()}</strong>
+                                    </td>
+                                    <td style={tableCellStyle}>
+                                        {(() => {
+                                            const customer = users.find(u => u.id == order.userId);
+                                            return (
+                                                <>
+                                                    <strong>{customer ? customer.name : 'Unknown User'}</strong>
+                                                    <br />
+                                                    <small>{customer ? customer.email : (order.userId || 'No ID')}</small>
+                                                </>
+                                            );
+                                        })()}
+                                    </td>
+                                    <td style={tableCellStyle}>
+                                        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                                            {order.status === 'Preparing' && (
+                                                <button
+                                                    onClick={() => handleStatusUpdate(order.id, 'Ready')}
+                                                    style={{
+                                                        padding: '6px 12px',
+                                                        backgroundColor: '#66bb6a',
+                                                        color: 'white',
+                                                        border: 'none',
+                                                        borderRadius: '4px',
+                                                        cursor: 'pointer',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Mark Ready
+                                                </button>
+                                            )}
+                                            {order.status === 'Ready' && (
+                                                <button
+                                                    onClick={() => handleStatusUpdate(order.id, 'Completed')}
+                                                    style={{
+                                                        padding: '6px 12px',
+                                                        backgroundColor: '#26a69a',
+                                                        color: 'white',
+                                                        border: 'none',
+                                                        borderRadius: '4px',
+                                                        cursor: 'pointer',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Completed
+                                                </button>
+                                            )}
+                                            {order.canCancel() && (
+                                                <button
+                                                    onClick={() => handleStatusUpdate(order.id, 'Canceled')}
+                                                    style={{
+                                                        padding: '6px 12px',
+                                                        backgroundColor: '#ef5350',
+                                                        color: 'white',
+                                                        border: 'none',
+                                                        borderRadius: '4px',
+                                                        cursor: 'pointer',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Cancel
+                                                </button>
+                                            )}
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-        {/* Order Details Modal/Expansion could be added here */}
+            {/* Order Details Modal/Expansion could be added here */}
         </>
     );
 }

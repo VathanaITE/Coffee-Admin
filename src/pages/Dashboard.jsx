@@ -48,23 +48,23 @@ export default function Dashboard() {
   }, []);
 
   const cards = [
-    { title: 'Users', value: stats.users, icon: <Users size={32} />, bgColor: '#ffffff', borderColor: '#3b82f6' },
-    { title: 'Orders', value: stats.orders, icon: <ShoppingCart size={32} />, bgColor: '#ffffff', borderColor: '#10b981' },
-    { title: 'Products', value: stats.products, icon: <Package size={32} />, bgColor: '#ffffff', borderColor: '#f59e0b' },
-    { title: 'Sales', value: `$${stats.sales.toFixed(2)}`, icon: <DollarSign size={32} />, bgColor: '#ffffff', borderColor: '#8b5cf6' }
+    { title: 'Users', subtitle: 'Active users', value: stats.users, icon: <Users size={36} />, bgColor: 'linear-gradient(135deg,#ffffff, #f8fbff)', borderColor: '#3b82f6' },
+    { title: 'Orders', subtitle: 'Open orders', value: stats.orders, icon: <ShoppingCart size={36} />, bgColor: 'linear-gradient(135deg,#ffffff, #f3faf6)', borderColor: '#10b981' },
+    { title: 'Products', subtitle: 'Available', value: stats.products, icon: <Package size={36} />, bgColor: 'linear-gradient(135deg,#ffffff, #fff8f1)', borderColor: '#f59e0b' },
+    { title: 'Sales', subtitle: 'Total revenue', value: `$${stats.sales.toFixed(2)}`, icon: <DollarSign size={36} />, bgColor: 'linear-gradient(135deg,#ffffff, #f6f4ff)', borderColor: '#8b5cf6' }
   ];
 
-  return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f0f9ff' }}>
+ return (
+    <div style={{ minHeight: '100vh', backgroundColor: '#ffffffe2' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <div >
           <h1 style={{ fontSize: '2.5rem', fontWeight: '800', color: '#0f172a', marginBottom: '8px' }}>Dashboard</h1>
           <p style={{ fontSize: '1.05rem', color: '#475569' }}>Welcome back! Here's your business overview.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px', marginBottom: '28px' }}>
+        <div className="dashboard-grid">
           {loading ? (
-            <div style={{ gridColumn: '1 / -1', padding: '32px', backgroundColor: '#ffffff', borderRadius: '20px', boxShadow: '0 20px 40px rgba(15, 23, 42, 0.08)', textAlign: 'center', color: '#64748b' }}>
+            <div className="dashboard-loading-card">
               Loading dashboard metrics…
             </div>
           ) : (

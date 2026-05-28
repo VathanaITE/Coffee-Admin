@@ -26,7 +26,7 @@ export default function AdminLayout() {
     <div style={{ fontFamily: "sans-serif", margin: "0px" }}>
       
       {/* Sidebar */}
-      <aside style={{ position: "fixed", left: 0, top: 0, width: "250px", height: "100vh", backgroundColor: "#47330f", color: "white", padding: "10px",
+      <aside className="app-sidebar" style={{ position: "fixed", left: 0, top: 0, width: "250px", height: "100vh", backgroundColor: "#47330f", color: "white", padding: "10px",
          display: "flex", flexDirection: "column", overflowY: "auto"}}>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", marginBottom: "30px" }}>
@@ -85,7 +85,7 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main Content Area */}
-      <main style={{ marginLeft: "260px", padding: "30px", backgroundColor: "#f3f4f6", minHeight: "100vh" }}>
+      <main className="app-content" style={{ marginLeft: "260px", padding: "30px", backgroundColor: "#f3f4f6", minHeight: "100vh" }}>
         {/* The Outlet is where your Dashboard or Products page will render */}
         <Outlet /> 
       </main>
